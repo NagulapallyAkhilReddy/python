@@ -4,6 +4,7 @@ import time
 from food import Food
 
 from snake import Snake
+from scoreboard import ScoreBoard
 
 print(turtle.mode())
 platform=Screen()
@@ -13,6 +14,7 @@ platform.tracer(0)
 
 snake=Snake()
 food=Food()
+score=ScoreBoard()
 platform.listen()
 platform.onkey(snake.up,"Up")
 platform.onkey(snake.down,"Down")
@@ -43,6 +45,7 @@ platform.onkey(snake.left,"Left")
 
 
 lets_play=True
+score_count=0
 while lets_play:
     platform.update()
     time.sleep(0.1)
@@ -57,7 +60,10 @@ while lets_play:
     # my_snake[0].forward(20)
     #detect collision with food
     if snake.head.distance(food)<15:
+        score_count+=1
+        score.clear()
         food.refresh()
+        score.update_score(score_count)
 
 
 platform.exitonclick()
