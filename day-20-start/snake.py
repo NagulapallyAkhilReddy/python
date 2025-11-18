@@ -12,6 +12,7 @@ class Snake:
         # self.starting_positions = [(0, 0), (-20, 0), (-40, 0)]#made this as constant
         self.my_snake = []
         self.create_snake()
+        self.head=self.my_snake[0]#after ma's explanation
         # for position in self.starting_positions:
         #     my_snake_part = turtle.Turtle("square")
         #     my_snake_part.color("white")
@@ -39,7 +40,7 @@ class Snake:
             self.my_snake[index].goto(x, y)
 
         # self.my_snake[0].left(90)
-        self.my_snake[0].forward(MOVE)#made as constant
+        self.head.forward(MOVE)#made as constant
 
     def up(self):
         # print(self.my_snake[0].mode())

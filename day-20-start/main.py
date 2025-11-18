@@ -55,5 +55,9 @@ while lets_play:
     #
     # my_snake[0].left(90)
     # my_snake[0].forward(20)
+    #detect collision with food
+    if snake.head.distance(food)<15:
+        food.refresh()
+
 
 platform.exitonclick()
