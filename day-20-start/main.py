@@ -72,4 +72,13 @@ while lets_play:
         lets_play=False
         score.game_over()
 
+    #detect collision with the tail
+    for tail in snake.my_snake[1:]:
+        # if tail==snake.head:
+        #     pass#implementing slicing here after mam's explanation
+        if snake.head.distance(tail)<10:
+            score.game_over()
+            lets_play=False
+
+
 platform.exitonclick()
