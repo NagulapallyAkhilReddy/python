@@ -4,12 +4,19 @@ import time
 
 from snake import Snake
 
+print(turtle.mode())
 platform=Screen()
 platform.setup(width=600,height=600)
 platform.bgcolor("black")
 platform.tracer(0)
 
 snake=Snake()
+platform.listen()
+platform.onkey(snake.up,"Up")
+platform.onkey(snake.down,"Down")
+platform.onkey(snake.right,"Right")
+platform.onkey(snake.left,"Left")
+
 # x=0
 # for _ in range(3):
 #     my_snake=turtle.Turtle()
