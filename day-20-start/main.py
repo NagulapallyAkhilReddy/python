@@ -1,6 +1,7 @@
 import turtle
 from turtle import Screen
 import time
+
 from food import Food
 
 from snake import Snake
@@ -64,6 +65,11 @@ while lets_play:
         # score.clear()#after mam's explanation moved this aprt too into scoreboard class
         food.refresh()
         score.increase_score()
+        snake.extend_snake()
 
+    #detect collision with the wall
+    if snake.head.xcor()>290 or snake.head.xcor()<-290 or snake.head.ycor()>290 or snake.head.ycor()<-290:
+        lets_play=False
+        score.game_over()
 
 platform.exitonclick()
