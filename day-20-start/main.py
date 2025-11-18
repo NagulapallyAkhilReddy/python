@@ -60,10 +60,10 @@ while lets_play:
     # my_snake[0].forward(20)
     #detect collision with food
     if snake.head.distance(food)<15:
-        score_count+=1
-        score.clear()
+        # score_count+=1
+        # score.clear()#after mam's explanation moved this aprt too into scoreboard class
         food.refresh()
-        score.update_score(score_count)
+        score.increase_score()
 
 
 platform.exitonclick()
