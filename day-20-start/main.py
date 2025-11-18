@@ -2,11 +2,9 @@ import turtle
 from turtle import Screen
 import time
 
-# turtle.tracer(0)
 platform=Screen()
 platform.setup(width=600,height=600)
 platform.bgcolor("black")
-platform.tracer(0)
 # x=0
 # for _ in range(3):
 #     my_snake=turtle.Turtle()
@@ -30,8 +28,6 @@ for position in starting_positions:
     my_snake.append(my_snake_part)
 
 
-# turtle.update()
-platform.update()
 lets_play=True
 while lets_play:
     for index in range(len(my_snake)-1,0,-1):
