@@ -1,0 +1,7 @@
+#https://neal.fun/space-elevator/--for inspiration
+print("Welcome to the rollercoaster!")
+height = int(input("What is your height in cm? "))
+if height>=120:
+    print("you can ride")
+else:
+    print("sorry you need to grow taller before riding")
