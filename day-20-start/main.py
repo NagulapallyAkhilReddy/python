@@ -1,6 +1,7 @@
 import turtle
 from turtle import Screen
 import time
+from food import Food
 
 from snake import Snake
 
@@ -11,6 +12,7 @@ platform.bgcolor("black")
 platform.tracer(0)
 
 snake=Snake()
+food=Food()
 platform.listen()
 platform.onkey(snake.up,"Up")
 platform.onkey(snake.down,"Down")

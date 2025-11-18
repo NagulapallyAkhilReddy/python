@@ -2,6 +2,10 @@ import  turtle
 
 STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
 MOVE=20
+UP=90
+DOWN=270
+RIGHT=0
+LEFT=180
 
 class Snake:
     def __init__(self):
@@ -39,20 +43,32 @@ class Snake:
 
     def up(self):
         # print(self.my_snake[0].mode())
-         self.my_snake[0].setheading(90)
+        if self.my_snake[0].heading()==DOWN:
+            pass
+        else:
+            self.my_snake[0].setheading(UP)
 
 
         # print(self.my_snake[0].heading())
 
     def down(self):
-        self.my_snake[0].setheading(270)
+        if self.my_snake[0].heading() == UP:
+            pass
+        else:
+            self.my_snake[0].setheading(DOWN)
         # print(self.my_snake[0].heading())
 
 
     def right(self):
-        self.my_snake[0].setheading(0)
+        if self.my_snake[0].heading() == LEFT:
+            pass
+        else:
+            self.my_snake[0].setheading(RIGHT)
         # print(self.my_snake[0].heading())
 
     def left(self):
-        self.my_snake[0].setheading(180)
+        if self.my_snake[0].heading() == RIGHT:
+            pass
+        else:
+            self.my_snake[0].setheading(LEFT)
         # print(self.my_snake[0].heading())
