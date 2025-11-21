@@ -1,12 +1,25 @@
 from turtle import Screen, Turtle
 
+import paddle
+from paddle import Paddle
+
 pong_screen=Screen()
 pong_screen.setup(800,500)
 pong_screen.bgcolor("black")
-pong_screen.tracer(0)
+# pong_screen.tracer(0)
+pong_screen.listen()
+player1=Paddle()
+player1.setposition(380,0)
+player2=Paddle()
+player2.setposition(-380,0)
+
 x=0
 y=228
 i=0
+
+
+
+
 # pong_dash=[]
 while y>-250:
     pong_dash_single=Turtle()
@@ -21,7 +34,17 @@ while y>-250:
     # pong_dash.append(pong_dash_single)
     i+=1
 
-pong_screen.update()
+
+game_is_on=True
+while game_is_on:
+    pong_screen.onkey(player1.move_up,"Up")
+    pong_screen.onkey(player1.move_down,"Down")
+    pong_screen.onkey(player2.move_up,"w")
+    pong_screen.onkey(player2.move_down,"s")
+    pong_screen.update()
+
+
+
 
 
 pong_screen.exitonclick()
