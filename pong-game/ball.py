@@ -13,7 +13,7 @@ class Ball(Turtle):
         self.setheading(45)
         # self.goto(350,250)
 
-    def move(self):
+    def move(self,value):
         new_x=self.xcor()+10
-        new_y=self.ycor()+10
+        new_y=self.ycor()+value
         self.goto(new_x,new_y)
