@@ -8,7 +8,7 @@ class Paddle(Turtle):
         self.speed(90)
         self.up()
         self.speed("slow")
-        self.shapesize(3, 0.4)
+        self.shapesize(3,0.5)
 
 
     def move_up(self):

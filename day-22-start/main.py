@@ -1,6 +1,6 @@
+from random import random
 from turtle import Screen, Turtle
 
-import paddle
 from ball import Ball
 from paddle import Paddle
 
@@ -13,6 +13,11 @@ player1=Paddle()
 player1.setposition(380,0)
 player2=Paddle()
 player2.setposition(-380,0)
+pong_screen.onkey(player1.move_up, "Up")
+pong_screen.onkey(player1.move_down, "Down")
+pong_screen.onkey(player2.move_up, "w")
+pong_screen.onkey(player2.move_down, "s")
+
 ball=Ball()
 
 x=0
@@ -35,20 +40,32 @@ while y>-250:
     y = y - 30
     # pong_dash.append(pong_dash_single)
     i+=1
-game_is_on=False
-user_input=pong_screen.textinput("start game","shall we start the game?: 'y' or 'n'")
-if user_input.lower()=='y':
-    game_is_on=True
+game_is_on=True
+
+
 
 while game_is_on:
-    pong_screen.onkey(player1.move_up, "Up")
-    pong_screen.onkey(player1.move_down, "Down")
-    pong_screen.onkey(player2.move_up, "w")
-    pong_screen.onkey(player2.move_down, "s")
-    pong_screen.update()
-    ball.forward(15)
-    if ball.ycor()>=240 or ball.ycor()<=-240:
-        ball.tiltangle(-ball.heading())
+    # pong_screen.update()
+    ball.forward(5)
+    if ball.ycor()>=235 or ball.ycor()<=-230:
+            ball.setheading(-ball.heading())
+
+    if ball.distance(player1)<10 :
+        if 0<=ball.heading()<=90:
+            ball.setheading(ball.heading()+90)
+        else:
+            ball.setheading(ball.heading()-90)
+    if ball.distance(player2)<10:
+        if 180<=ball.heading()<=270:
+            ball.setheading(ball.heading()+90)
+        else:
+            ball.setheading(ball.heading()-90)
+
+    if ball.xcor()>400 or ball.xcor()<-400:
+        game_is_on=False
+
+
+
 
 
 
