@@ -11,7 +11,7 @@ class Ball(Turtle):
         self.up()
         self.setposition((random.randint(-360,360)),(random.randint(-230,230)))
         self.setheading(random.randint(1,360))
-        self.speed(2)
+        self.speed(1)
 
 
 
