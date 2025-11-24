@@ -3,6 +3,7 @@ from turtle import Screen
 
 from ball import Ball
 from paddle import Paddle
+from scoreboard import Score
 
 screen=Screen()
 screen.setup(800,600)
@@ -17,6 +18,7 @@ r_paddle=Paddle(350,0)
 l_paddle=Paddle(-350,0)
 ball=Ball()
 screen.listen()
+score=Score()
 screen.onkey(r_paddle.move_up,"Up")
 screen.onkey(l_paddle.move_up,"w")
 screen.onkey(r_paddle.move_down,"Down")
@@ -24,7 +26,7 @@ screen.onkey(l_paddle.move_down,"s")
 
 game_is_on=True
 while game_is_on:
-    time.sleep(0.1)
+    time.sleep(ball.ball_speed)
     screen.update()
     ball.move()
     #detect collision with the wall
@@ -36,11 +38,21 @@ while game_is_on:
         ball.bounce_x()
 
     #detect when the paddle misses the ball
-    if ball.xcor()>350:
+    if ball.xcor()>400:
+        score.l_point()
+        time.sleep(0.1)
         ball.setposition(0,0)
+        ball.ball_speed=0.1
+        ball.bounce_x()
+        ball.bounce_y()
 
-    if ball.xcor()<-350:
+    if ball.xcor()<-400:
+        score.r_point()
+        time.sleep(0.1)
         ball.setposition(0,0)
+        ball.ball_speed=0.1
+        ball.bounce_x()
+        # ball.bounce_y()
 
 
 
