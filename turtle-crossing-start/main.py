@@ -9,6 +9,8 @@ screen.setup(width=600, height=600)
 screen.tracer(0)
 screen.listen()
 score=Scoreboard()
+car1=CarManager()
+car1.first_car()
 
 
 shikamaru=Player()
@@ -20,12 +22,14 @@ game_is_on = True
 while game_is_on:
     time.sleep(0.5-shikamaru.level_speed)
     car=CarManager()
+    car.add_car()
     car.move()
-    game_is_on=car.hit(shikamaru)
+    not_hit=car.no_hit(shikamaru)
     if shikamaru.ycor()>280:
         score.increase_level()
-    if not game_is_on:
+    if not not_hit:
         score.game_over()
+        game_is_on=False
 
     screen.update()
 
