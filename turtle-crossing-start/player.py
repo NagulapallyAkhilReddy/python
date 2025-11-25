@@ -1,5 +1,6 @@
 import time
 from turtle import Turtle
+from scoreboard import Scoreboard
 
 STARTING_POSITION = (0, -280)
 MOVE_DISTANCE = 10
@@ -13,8 +14,10 @@ class Player(Turtle):
         self.up()
         self.setposition(STARTING_POSITION)
         self.setheading(90)
-        self.level=1
         self.level_speed=0
+
+    # def increase_level(self):
+
 
     def move(self):
         if self.ycor()<280:
@@ -22,7 +25,6 @@ class Player(Turtle):
 
         if self.ycor()>=280:
             time.sleep(1)
-            self.level+=1
             self.level_speed=0.1
             self.setposition(STARTING_POSITION)
 

@@ -14,7 +14,6 @@ class CarManager(Turtle):
         self.shapesize(1,2)
         self.color(random.choice(COLORS))
         self.up()
-        self.car_speed=0.01
         self.setposition(300,random.randint(-280,280))
         self.setheading(180)
         self.forward(STARTING_MOVE_DISTANCE)
