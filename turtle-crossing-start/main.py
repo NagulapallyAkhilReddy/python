@@ -17,9 +17,11 @@ screen.onkey(shikamaru.move,"Up")
 
 game_is_on = True
 while game_is_on:
-    time.sleep(0.5)
+    time.sleep(0.5-shikamaru.level_speed)
     car=CarManager()
     car.move()
+    game_is_on=car.hit(shikamaru)
+    print(game_is_on)
     screen.update()
 
 

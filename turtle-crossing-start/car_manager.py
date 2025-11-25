@@ -27,3 +27,8 @@ class CarManager(Turtle):
             all_cars[index].forward(MOVE_INCREMENT)
 
 
+    def hit(self,turtle_player):
+        for index in range(len(all_cars)):
+            if all_cars[index].distance(turtle_player)<30:
+                return False
+        return True
