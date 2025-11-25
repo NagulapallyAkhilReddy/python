@@ -4,6 +4,10 @@ from player import Player
 from car_manager import CarManager
 from scoreboard import Scoreboard
 
+#i have completed the whole project on my own
+#and i saw mam's explanation, then i realised i have some few important to take into note
+#after mam's explanation--- will update them
+
 screen = Screen()
 screen.setup(width=600, height=600)
 screen.tracer(0)
