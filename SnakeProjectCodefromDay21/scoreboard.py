@@ -7,8 +7,10 @@ class Scoreboard(Turtle):
 
     def __init__(self):
         super().__init__()
+        with open("../../OneDrive/Desktop/scorefile.txt") as score_file:
+            the_highscore=int(score_file.read())
         self.score = 0
-        self.highscore=0
+        self.highscore=the_highscore
         self.color("white")
         self.penup()
         self.goto(0, 270)
@@ -18,6 +20,8 @@ class Scoreboard(Turtle):
     def update_scoreboard(self):
         self.clear()
         self.write(f"Score: {self.score}, High Score: {self.highscore}", align=ALIGNMENT, font=FONT)
+        with open("../../OneDrive/Desktop/scorefile.txt",mode="w") as score_file:
+            score_file.write(f"{self.highscore}")
 
     # def game_over(self):
     #     self.goto(0, 0)
