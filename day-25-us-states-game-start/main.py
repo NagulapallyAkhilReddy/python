@@ -16,22 +16,42 @@ usmap.shape(image)
 
 # screen.onscreenclick(load_the_components)
 
-user_input=screen.textinput("Do you know all the states in US ?","type the state name")
 
-#TODO:1 - convert the guess to title case
-guess=user_input.title()
 # print(guess)
-#TODO:2 - check if the guess is among 50 states
+#TODO:5 - record the correct guesses in a list
+list_of_correct_guesses=[]
+
 states=pandas.read_csv("50_states.csv")
 # print(type(states))
 list_of_states=states["state"].to_list()
-
-if guess in list_of_states:
-    print(guess + " is present")
-#TODO:3 - write correct guesses on to map
 #TODO:4 - use a loop to allow users to keep guessing
-#TODO:5 - record the correct guesses in a list
-#TODO:6 - Keep track of the score
+game_is_on=True
+while game_is_on:
+    # TODO:6 - Keep track of the score
+    user_input = screen.textinput(f"score: {len(list_of_correct_guesses)}/50 Do you know all the states in US ?", "type the state name")
+
+    # TODO:1 - convert the guess to title case
+    guess = user_input.title()
+    # TODO:2 - check if the guess is among 50 states
+    if guess in list_of_states:
+        # print(guess + " is present")
+        list_of_correct_guesses.append(guess)
+        x=states[states.state==guess]["x"].iloc[0]
+        # print(x.iloc[0])
+        y=states[states.state==guess]["y"].iloc[0]
+        state_turtle=Turtle()
+        state_turtle.hideturtle()
+        state_turtle.up()
+        # TODO:3 - write correct guesses on to map
+        state_turtle.goto(x,y)
+        state_turtle.write(f"{guess}",align="center",font=("Arial",8,"normal"))
+    if len(list_of_correct_guesses)==50:
+        game_is_on=False
+        print("you have guessd all the states, congrats")
+
+
+
+
 
 
 
