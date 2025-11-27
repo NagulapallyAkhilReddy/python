@@ -32,10 +32,13 @@ while game_is_on:
 
     # TODO:1 - convert the guess to title case
     guess = user_input.title()
+    if guess=="Exit":
+        break
     # TODO:2 - check if the guess is among 50 states
     if guess in list_of_states:
         # print(guess + " is present")
-        list_of_correct_guesses.append(guess)
+        if guess  not in list_of_correct_guesses:
+            list_of_correct_guesses.append(guess)
         x=states[states.state==guess]["x"].iloc[0]
         # print(x.iloc[0])
         y=states[states.state==guess]["y"].iloc[0]
@@ -45,15 +48,28 @@ while game_is_on:
         # TODO:3 - write correct guesses on to map
         state_turtle.goto(x,y)
         state_turtle.write(f"{guess}",align="center",font=("Arial",8,"normal"))
+
+
     if len(list_of_correct_guesses)==50:
         game_is_on=False
         print("you have guessd all the states, congrats")
 
 
+ # TODO:7 - states_to_learn.csv
+if len(list_of_correct_guesses)<50:
+    list_to_learn=list_of_states
+    # with open("states_to_learn.csv","w") as learn:
+    #     for state in list_of_correct_guesses:
+    #         list_to_learn.remove(state)
+    #     for item in list_to_learn:
+    #         learn.write(item + "\n")
+    for state in list_of_correct_guesses:
+        list_to_learn.remove(state)
+    list_to_learn_dataframe=pandas.DataFrame(list_to_learn)
+    list_to_learn_dataframe.to_csv("list_of_states_to_learn.csv")
 
 
 
 
 
-
-screen.mainloop()
+# screen.mainloop()
